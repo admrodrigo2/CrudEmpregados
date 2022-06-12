@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MvcApplication1.Models.Empregados>
+
+@{
+    ViewData["Title"] = "Empregados";
+}
+
+<ext-section target="Main">
+    <ext-container region="Center" scrollable="true" paddingAsString="30 20 30 50">
+        <content>
+            <h1>Empregados</h1>
+
+            <p>
+                <a asp-action="Create">Cadastro</a>
+            </p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                         <th>
+                              @Html.DisplayNameFor(model => model.Nome)
+                         </th>
+                         <th>
+                              @Html.DisplayNameFor(model => model.Endereco)
+                        </th>
+                        <th>
+                              @Html.DisplayNameFor(model => model.Telefone)
+                        </th>
+                        <th>
+                              @Html.DisplayNameFor(model => model.Cargo)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Endereco)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cargo)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Visualizar</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                            </td>
+                        </tr>
+                }
+                    </tbody>
+            </table>
+
+        </content>
+
+    </ext-container>
+</ext-section>

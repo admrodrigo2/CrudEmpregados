@@ -1,0 +1,18 @@
+@using MvcApplication1.Data
+<nav class="sidebar-nav">
+    <ul>
+        @{
+            ViewContext.RouteData.Values.TryGetValue("controller", out var currControllerObj);
+            var currController = currControllerObj?.ToString();
+
+            foreach (var item in NavData.Items)
+            {
+                var active = currController == item.Path ? " active" : "";
+
+                var cls = $"sidebar-nav-link{active}";
+
+                <li><a href="@(Url.Action(null, item.Path))" class="@cls"><i class="x-md">@item.IconCls</i><span>@item.Name</span></a></li>
+            }
+        }
+    </ul>
+</nav>
